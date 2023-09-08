@@ -1,0 +1,42 @@
+#include<iostream>
+
+int parz(int num){
+        int flag = 0;
+        int div = num % 2;
+        if (num < 4){
+                flag = 1;
+        }else{
+                for(int i = num / 2; i > 1; --i){
+                        if(0 == num % i ){
+                                flag = 0;
+                                break;
+                        }else{
+                                flag = 1;
+                        }
+                }
+        }
+        return flag;
+}
+
+
+
+int parzadd(int num){
+        for(int i = 2; i < num / 2; ++i){
+                if(parz(i)){
+                        if(parz(num - i)){
+                                return 1;
+                        }
+                }
+        }
+        return 0;
+}
+
+
+
+int main(){
+        int n = 0 ;
+        std::cout << " Enter to one number " << std::endl;
+        std::cin >> n;
+        std::cout<<parzadd(n)<<std::endl;
+}
+   
